@@ -1,6 +1,9 @@
 .header {
   position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10001;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -8,6 +11,8 @@
   height: 64px;
   width: 80vw;
   padding: 0 10vw;
+  background-color: hsla(0,0%,100%,.86);
+  backdrop-filter: saturate(180%) blur(20px);
 
   .logo h1{
     font-size: 32px;

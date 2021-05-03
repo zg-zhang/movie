@@ -1,0 +1,120 @@
+.list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 44px 24px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+
+  .box {
+    position: relative;
+    transition: transform .3s;
+
+    .shade {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      height: calc(100% - 3px);
+      width: 100%;
+      cursor: pointer;
+      background-color: transparent;
+
+      &:hover button {
+        display: flex;
+      }
+
+      button {
+        display: none;
+        justify-content: center;
+        align-items: center;
+        width: 22%;
+        height: 15.8%;
+        backdrop-filter: blur(8px);
+        background: hsla(0,0%,100%,.08);
+        border-radius: 50%;
+        border: 1px solid hsla(0,0%,100%,.08);
+        transition: .2s;
+        cursor: pointer;
+
+        &:hover {
+          background: hsla(0,0%,100%,.28);
+        }
+
+        .icon {
+          margin-top: 4px;
+          font-size: 32px;
+          color: #ffffff;
+        }
+      }
+    }
+
+    .cover {
+      height: 0;
+      padding-bottom: 140%;
+      overflow: hidden;
+      border-radius: .75em;
+      cursor: pointer;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .shadow {
+      display: none;
+      position: absolute;
+      top: 18px;
+      height: 100%;
+      width: 100%;
+      filter: blur(16px) opacity(.6);
+      transform: scale(.92, .96);
+      z-index: -1;
+      background-size: cover;
+      border-radius: .75em;
+      aspect-ratio: 1/1;
+    }
+
+    &:hover .shadow {
+      display: block;
+    }
+  }
+
+  .text {
+    margin-top: 8px;
+
+    .title {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 20px;
+      word-break: break-all;
+      color: #000000;
+
+      a {
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .info {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+      font-size: 12px;
+      opacity: .68;
+      line-height: 18px;
+      word-break: break-word;
+    }
+  }
+}

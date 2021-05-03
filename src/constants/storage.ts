@@ -1,3 +1,5 @@
-export default {
+const storageConstants = {
     tab: 'TAB'
 }
+
+export default storageConstants

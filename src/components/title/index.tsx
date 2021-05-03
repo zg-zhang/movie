@@ -1,10 +1,23 @@
 import React from "react";
+import styles from '../../styles/title.module.less'
 
-function Title() {
+interface titleProps {
+    title: string,
+    right?: string,
+}
+
+function Title(props: titleProps) {
+    const { title, right } = props
+
     return (
-        <>
-            Title
-        </>
+        <div className={styles.title}>
+            <div className={styles.left}>
+                {title}
+            </div>
+            <div className={styles.right}>
+                { right ? right : '' }
+            </div>
+        </div>
     )
 }
 
