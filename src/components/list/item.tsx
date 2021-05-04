@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from 'react-router-dom'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import styles from '../../styles/list.module.less'
@@ -7,6 +8,7 @@ interface dataType {
     cover: string,
     name: string,
     nameEn: string,
+    id: string,
 }
 
 interface listItemProps {
@@ -16,12 +18,23 @@ interface listItemProps {
 
 function ListItem(props: listItemProps) {
     const { data, info } = props
+    const history = useHistory()
+
+    function handleClick(e: any, id: string) {
+        const name = e.target.nodeName
+        if (name === 'BUTTON' || name === 'path' || name === 'svg') return
+        history.push(`/detail/${id}`)
+    }
+
+    function handleClickStar() {
+        console.log(1)
+    }
 
     return (
         <div className={styles.item}>
             <div className={styles.box}>
-                <div className={styles.shade}>
-                    <button>
+                <div className={styles.shade} onClick={(e) => handleClick(e, data.id)}>
+                    <button onClick={handleClickStar}>
                         <FontAwesomeIcon className={styles.icon} icon={faHeart} />
                     </button>
                 </div>
@@ -35,7 +48,7 @@ function ListItem(props: listItemProps) {
             </div>
 
             <div className={styles.text}>
-                <div className={styles.title}>
+                <div className={styles.title} onClick={e => handleClick(e, data.id)}>
                     <a>{data.name}</a>
                 </div>
                 <div className={styles.info}>

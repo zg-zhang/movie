@@ -6,6 +6,7 @@ import {getList} from "../../events/getData";
 import {getSessionStorage, setSessionStorage} from "../../tools/storage";
 import storageConstants from "../../constants/storage";
 import List from "../../components/list";
+import storage from "../../constants/storage";
 
 interface getListProps {
     data: never[]
@@ -18,6 +19,8 @@ function Explore() {
 
     useEffect(() => {
         const data = getSessionStorage(storageConstants.listData)
+        const listActive = getSessionStorage(storageConstants.listActive)
+        setActive(listActive || 0)
         if (data) {
             setList(data.data)
         } else {
@@ -29,10 +32,15 @@ function Explore() {
         }
     }, [])
 
+    function handleActive(active: number) {
+        setSessionStorage(storageConstants.listActive, active)
+        setActive(active)
+    }
+
     return (
         <>
             <h1 className={styles.explore}>发现</h1>
-            <Tab list={tabList} active={active} setActive={setActive}/>
+            <Tab list={tabList} active={active} setActive={handleActive}/>
             <div className={styles.playList}>
                 <LazyLoad offset={200} once>
                     { active === 0 ? <List list={list} info='全部影片' /> : null}

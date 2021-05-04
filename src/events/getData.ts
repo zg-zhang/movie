@@ -8,3 +8,7 @@ export const getMain = async <T>() => {
 export const getList = async <T>() => {
     return await request.get<T>(urlConstants.getAllList)
 }
+
+export const getDetail = async <T>(id: string) => {
+    return await request.get<T>(urlConstants.getDetail(id))
+}

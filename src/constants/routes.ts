@@ -1,7 +1,9 @@
 const routesConstants = {
     main: '/',
     explore: '/explore',
-    library: '/library'
+    library: '/library',
+
+    detail: '/detail/:id'
 }
 
 export default routesConstants

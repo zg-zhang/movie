@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import { useLocation } from 'react-router-dom'
 import styles from '../../styles/header.module.less'
 import HeaderButton from "./button";
 import HeaderSearch from "./search";
@@ -9,11 +10,13 @@ import storage from '../../constants/storage'
 
 function Header() {
     const [tab, setTab] = useState(routesConstants.main)
+    const location = useLocation()
 
     useEffect(() => {
-        const tabSession = getSessionStorage(storage.tab)
+        let tabSession = getSessionStorage(storage.tab)
+        tabSession = tabSession === location.pathname ? tabSession : location.pathname
         if (tabSession) setTab(tabSession)
-    }, [])
+    }, [location])
 
     function handleChangeTab(path: string): void {
         setTab(path)

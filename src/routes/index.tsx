@@ -6,6 +6,7 @@ import Header from "../components/header";
 import Main from "../pages/main";
 import Explore from "../pages/explore";
 import MainLayout from "../layout/main";
+import Detail from "../pages/detail";
 
 function Routes() {
     return (
@@ -17,6 +18,8 @@ function Routes() {
                     <Route path={routesConstants.main} exact><Main /></Route>
                     <Route path={routesConstants.explore} exact><Explore /></Route>
                     <Route path={routesConstants.library} exact><Main /></Route>
+
+                    <Route path={routesConstants.detail} exact><Detail /></Route>
                 </Switch>
             </MainLayout>
         </Router>
