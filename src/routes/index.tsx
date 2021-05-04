@@ -4,9 +4,8 @@ import {HashRouter as Router, Route, Switch} from "react-router-dom";
 import routesConstants from "../constants/routes";
 import Header from "../components/header";
 import Main from "../pages/main";
-import Rank from "../pages/rank";
+import Explore from "../pages/explore";
 import MainLayout from "../layout/main";
-import routes from "../constants/routes";
 
 function Routes() {
     return (
@@ -16,7 +15,7 @@ function Routes() {
             <MainLayout>
                 <Switch>
                     <Route path={routesConstants.main} exact><Main /></Route>
-                    <Route path={routesConstants.rank} exact><Rank /></Route>
+                    <Route path={routesConstants.explore} exact><Explore /></Route>
                     <Route path={routesConstants.library} exact><Main /></Route>
                 </Switch>
             </MainLayout>

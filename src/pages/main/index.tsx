@@ -2,6 +2,8 @@ import React, {useEffect, useState} from "react";
 import Title from "../../components/title";
 import {getMain} from "../../events/getData";
 import List from "../../components/list";
+import storageConstants from "../../constants/storage";
+import {getSessionStorage, setSessionStorage} from "../../tools/storage";
 
 interface getMainType {
     movieList: never[]
@@ -11,30 +13,42 @@ interface getMainType {
 }
 
 function Main() {
-    const [movieList, setMovieList] = useState([])
-    const [popularList, setPopularList] = useState([])
-    const [comingListNeiDi, setComingListNeiDi] = useState([])
-    const [comingListOther, setComingListOther] = useState([])
+    const defaultList = Array(10).fill({})
+
+    const [movieList, setMovieList] = useState(defaultList)
+    const [popularList, setPopularList] = useState(defaultList)
+    const [comingListNeiDi, setComingListNeiDi] = useState(defaultList)
+    const [comingListOther, setComingListOther] = useState(defaultList)
 
     useEffect(() => {
-        getMain<getMainType>().then(res => {
-            setMovieList(res.data.movieList)
-            setPopularList(res.data.popularList)
-            setComingListNeiDi(res.data.comingListNeiDi)
-            setComingListOther(res.data.comingListOther)
-        })
+        const data = getSessionStorage(storageConstants.mainData)
+        if (data) {
+            _setData(data)
+        } else {
+            getMain<getMainType>().then(res => {
+                setSessionStorage(storageConstants.mainData, res.data)
+                _setData(res.data)
+            })
+        }
     }, [])
+
+    function _setData(data: getMainType) {
+        setMovieList(data.movieList)
+        setPopularList(data.popularList)
+        setComingListNeiDi(data.comingListNeiDi)
+        setComingListOther(data.comingListOther)
+    }
 
     return (
         <>
             <Title title='正在热映' right='查看更多' />
-            <List list={movieList}/>
+            <List list={movieList} info='正在热映'/>
             <Title title='最受欢迎' right='查看更多' />
-            <List list={popularList}/>
+            <List list={popularList} info='最受欢迎'/>
             <Title title='内地即将上映' right='查看更多' />
-            <List list={comingListNeiDi}/>
+            <List list={comingListNeiDi} info='内地即将上映'/>
             <Title title='其他即将上映' right='查看更多' />
-            <List list={comingListOther} />
+            <List list={comingListOther} info='其他即将上映'/>
         </>
     )
 }

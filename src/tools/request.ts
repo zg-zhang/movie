@@ -3,7 +3,7 @@ import urlConstants from "../constants/url";
 
 const request = axios.create({
     baseURL: urlConstants.baseURL,
-    timeout: 10000,
+    timeout: 3000,
     headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
     }
@@ -25,7 +25,7 @@ request.interceptors.response.use(res => res.data, err => {
     let backoff = new Promise<void>(resolve => {
         setTimeout(() => {
             resolve()
-        }, 10000)
+        }, 3000)
     })
 
     return backoff.then(() => request(config))

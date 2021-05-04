@@ -1,6 +1,6 @@
 const routesConstants = {
     main: '/',
-    rank: '/rank',
+    explore: '/explore',
     library: '/library'
 }
 

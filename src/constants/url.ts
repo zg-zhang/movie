@@ -1,7 +1,8 @@
 const urlConstants = {
     baseURL: 'http://127.0.0.1:10000',
 
-    getAllData: '/main/getAllData'
+    getAllData: '/main/getAllData',
+    getAllList: '/main/getAllList'
 }
 
 export default urlConstants

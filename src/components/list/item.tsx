@@ -6,15 +6,16 @@ import styles from '../../styles/list.module.less'
 interface dataType {
     cover: string,
     name: string,
-    nameEn: string
+    nameEn: string,
 }
 
 interface listItemProps {
     data: dataType
+    info: string
 }
 
 function ListItem(props: listItemProps) {
-    const { data } = props
+    const { data, info } = props
 
     return (
         <div className={styles.item}>
@@ -38,7 +39,7 @@ function ListItem(props: listItemProps) {
                     <a>{data.name}</a>
                 </div>
                 <div className={styles.info}>
-                    <span>{data.nameEn || '正在热播'}</span>
+                    <span>{data.nameEn || info}</span>
                 </div>
             </div>
         </div>
