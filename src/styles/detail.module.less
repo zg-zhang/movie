@@ -1,0 +1,121 @@
+.info {
+  display: flex;
+  margin-bottom: 72px;
+
+  .cover {
+    position: relative;
+
+    img {
+      width: 288px;
+      border-radius: .75em;
+    }
+
+    .shadow {
+      position: absolute;
+      top: 20px;
+      height: 100%;
+      width: 100%;
+      filter: blur(16px) opacity(.6);
+      transform: scale(.92,.96);
+      z-index: -1;
+      background-size: cover;
+      border-radius: .75em;
+      aspect-ratio: 1/1;
+    }
+
+    .background {
+      position: absolute;
+      top: 0;
+      z-index: -10;
+      width: 288px;
+      height: 410px;
+      border-radius: .75em;
+      background-color: rgba(209,209,214,.28);
+    }
+  }
+
+  .context {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 56px;
+
+    .infoBox {
+      .name {
+        font-size: 36px;
+        font-weight: 700;
+        color: #000000;
+      }
+
+      .nameEn {
+        font-size: 24px;
+        color: #000000;
+        opacity: .88;
+        font-weight: 600;
+        margin-top: 12px;
+      }
+
+      .time {
+        font-size: 18px;
+        opacity: .88;
+        color: #000000;
+        margin-top: 24px;
+      }
+
+      .story {
+        font-size: 14px;
+        opacity: .68;
+        color: #000000;
+        margin-top: 24px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      .tags {
+        display: flex;
+        flex-direction: row;
+        margin-top: 24px;
+
+        span {
+          padding: 6px 10px;
+          border-radius: 6px;
+          margin-right: 12px;
+          background-color: rgba(209,209,214,.28);
+        }
+      }
+    }
+
+    .buttonBox {
+      display: flex;
+      flex-direction: row;
+
+      .star {
+        height: 40px;
+        min-height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        line-height: 18px;
+        font-weight: 600;
+        background-color: #eaeffd;
+        color: #335eea;
+        transition: .2s;
+        border-radius: 8px;
+        padding: 8px 16px;
+        user-select: none;
+        width: auto;
+        cursor: pointer;
+
+        &:active {
+          transform: scale(.94);
+        }
+      }
+    }
+
+  }
+}

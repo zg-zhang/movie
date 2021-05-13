@@ -1,23 +1,30 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import { useParams } from 'react-router-dom'
 import {getDetail} from "../../events/getData";
+import Info from "./info";
 
 interface paramsProps {
     id: string
 }
 
+interface detailProps {
+    data: any
+}
+
 function Detail() {
     const { id } = useParams<paramsProps>()
+    const [data, setData] = useState({})
 
     useEffect(() => {
-        getDetail(id).then(res => {
+        getDetail<detailProps>(id).then(res => {
             console.log(res);
+            setData(res.data)
         })
     }, [])
 
     return (
         <>
-            {id}
+            <Info data={data}/>
         </>
     )
 }

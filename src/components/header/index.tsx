@@ -31,7 +31,7 @@ function Header() {
             <div className={styles.tab}>
                 <HeaderButton path={routesConstants.main} active={tab} setActive={handleChangeTab}>首页</HeaderButton>
                 <HeaderButton path={routesConstants.explore} active={tab} setActive={handleChangeTab}>发现</HeaderButton>
-                <HeaderButton path={routesConstants.library} active={tab} setActive={handleChangeTab}>影库</HeaderButton>
+                <HeaderButton path={routesConstants.stars} active={tab} setActive={handleChangeTab}>收藏</HeaderButton>
             </div>
             <div className={styles.rightPart}>
                 <HeaderSearch />

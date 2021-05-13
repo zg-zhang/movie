@@ -1,8 +1,9 @@
 const routesConstants = {
     main: '/',
     explore: '/explore',
-    library: '/library',
+    stars: '/stars',
 
+    login: '/login',
     detail: '/detail/:id'
 }
 
