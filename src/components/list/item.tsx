@@ -49,7 +49,7 @@ function ListItem(props: listItemProps) {
 
             <div className={styles.text}>
                 <div className={styles.title} onClick={e => handleClick(e, data.id)}>
-                    <a>{data.name}</a>
+                    <span>{data.name}</span>
                 </div>
                 <div className={styles.info}>
                     <span>{data.nameEn || info}</span>

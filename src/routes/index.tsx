@@ -10,21 +10,27 @@ import Detail from "../pages/detail";
 import Login from "../pages/login";
 import Stars from "../pages/stars";
 
+import DataContextProvider from "../contexts/dataContextProvider";
+import User from "../pages/user";
+
 function Routes() {
     return (
         <Router>
-            <Header />
+            <DataContextProvider>
+                <Header />
 
-            <MainLayout>
-                <Switch>
-                    <Route path={routesConstants.main} exact><Main /></Route>
-                    <Route path={routesConstants.explore} exact><Explore /></Route>
-                    <Route path={routesConstants.stars} exact><Stars /></Route>
+                <MainLayout>
+                    <Switch>
+                        <Route path={routesConstants.main} exact><Main /></Route>
+                        <Route path={routesConstants.explore} exact><Explore /></Route>
+                        <Route path={routesConstants.stars} exact><Stars /></Route>
 
-                    <Route path={routesConstants.login} exact><Login /></Route>
-                    <Route path={routesConstants.detail} exact><Detail /></Route>
-                </Switch>
-            </MainLayout>
+                        <Route path={routesConstants.login} exact><Login /></Route>
+                        <Route path={routesConstants.user} exact><User /></Route>
+                        <Route path={routesConstants.detail} exact><Detail /></Route>
+                    </Switch>
+                </MainLayout>
+            </DataContextProvider>
         </Router>
     )
 }

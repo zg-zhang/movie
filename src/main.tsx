@@ -1,5 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import 'antd/dist/antd.css'
+
 import './styles/global.less'
 import App from './App'
 

@@ -1,17 +1,12 @@
 import React, {useState} from "react";
 import classNames from "classnames";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import styles from '../../styles/login.module.less'
 
-interface loginInputProps {
+interface userInputProps {
     placeholder: string,
-    icon: any,
-    type: string
 }
 
-const LoginInput = React.forwardRef((props: loginInputProps, ref: any) => {
-    const { icon, type } = props
-
+const UserInput = React.forwardRef((props: userInputProps, ref: any) => {
     const [focus, setFocus] = useState(false)
     const [placeholder, setPlaceholder] = useState(props.placeholder)
     const [text, setText] = useState('')
@@ -32,13 +27,9 @@ const LoginInput = React.forwardRef((props: loginInputProps, ref: any) => {
 
     return (
         <div className={focus ? classNames(styles.inputBox, styles.focus) : classNames(styles.inputBox)}>
-            <div className={focus ? classNames(styles.icon, styles.iconActive): classNames(styles.icon)}>
-                <FontAwesomeIcon icon={icon} />
-            </div>
             <div>
                 <input
                     ref={ref}
-                    type={type}
                     className={styles.input}
                     placeholder={placeholder}
                     onFocus={handleFocus}
@@ -51,4 +42,4 @@ const LoginInput = React.forwardRef((props: loginInputProps, ref: any) => {
     )
 })
 
-export default React.memo(LoginInput)
+export default React.memo(UserInput)

@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from "react";
-import { useLocation } from 'react-router-dom'
+import React, {useContext, useEffect, useState} from "react";
+import { useLocation, Link } from 'react-router-dom'
 import styles from '../../styles/header.module.less'
 import HeaderButton from "./button";
 import HeaderSearch from "./search";
@@ -25,9 +25,11 @@ function Header() {
 
     return (
         <header className={styles.header}>
-            <div className={styles.logo}>
-                <h1>时光电影</h1>
-            </div>
+            <Link to='/'>
+                <div className={styles.logo}>
+                    <h1>时光电影</h1>
+                </div>
+            </Link>
             <div className={styles.tab}>
                 <HeaderButton path={routesConstants.main} active={tab} setActive={handleChangeTab}>首页</HeaderButton>
                 <HeaderButton path={routesConstants.explore} active={tab} setActive={handleChangeTab}>发现</HeaderButton>

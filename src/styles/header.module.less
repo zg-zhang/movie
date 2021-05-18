@@ -9,18 +9,29 @@
   justify-content: space-between;
   align-items: center;
   height: 64px;
-  width: 80vw;
   padding: 0 10vw;
   background-color: hsla(0,0%,100%,.86);
   backdrop-filter: saturate(180%) blur(20px);
 
-  .logo h1{
-    font-size: 32px;
-    font-weight: 700;
-    color: #000000;
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      color: #000000;
+    }
   }
 
-  .tab, .rightPart {
+  .tab {
+    margin-left: 114px;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .rightPart {
     display: flex;
     flex-direction: row;
   }
@@ -29,7 +40,6 @@
 @media (max-width: 1336px) {
   .header {
     padding: 0 5vw;
-    width: 90vw;
   }
 }
 
@@ -43,6 +53,7 @@
   color: #000000;
 
   &:hover {
+    color: #335eea;
     background-color: rgba(209,209,214,0.28);
   }
 

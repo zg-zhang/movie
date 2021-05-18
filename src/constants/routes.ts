@@ -4,6 +4,7 @@ const routesConstants = {
     stars: '/stars',
 
     login: '/login',
+    user: '/user',
     detail: '/detail/:id'
 }
 

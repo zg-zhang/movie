@@ -1,15 +1,13 @@
+// @ts-ignore
 import axios from 'axios'
 import urlConstants from "../constants/url";
 
 const request = axios.create({
     baseURL: urlConstants.baseURL,
     timeout: 3000,
-    headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-    }
 })
 
-request.interceptors.response.use(res => res.data, err => {
+request.interceptors.response.use((res: { data: any; }) => res.data, (err: { config: any; }) => {
     let config = err.config
     if (!config) return Promise.reject(err)
 
