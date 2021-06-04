@@ -5,6 +5,7 @@ import List from "../../components/list";
 import storageConstants from "../../constants/storage";
 import {getSessionStorage, setSessionStorage} from "../../tools/storage";
 import routesConstants from "../../constants/routes";
+import Footer from "../../components/footer";
 
 interface getMainType {
     movieList: never[]
@@ -50,6 +51,7 @@ function Main() {
             <List list={comingListNeiDi} info='内地即将上映'/>
             <Title title='其他即将上映' type={4}/>
             <List list={comingListOther} info='其他即将上映'/>
+            <Footer />
         </>
     )
 }

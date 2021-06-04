@@ -1,0 +1,35 @@
+.list {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 34px 24px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  .cover {
+    height: 0;
+    padding-bottom: 100%;
+    overflow: hidden;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: rgba(209,209,214,.28);
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .name {
+    font-size: 16px;
+    margin-top: 12px;
+    font-weight: 600;
+    line-height: 20px;
+  }
+
+  .roleName {
+    opacity: .60;
+  }
+}

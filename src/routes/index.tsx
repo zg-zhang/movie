@@ -12,6 +12,7 @@ import Stars from "../pages/stars";
 
 import DataContextProvider from "../contexts/dataContextProvider";
 import User from "../pages/user";
+import Search from "../pages/search";
 
 function Routes() {
     return (
@@ -24,6 +25,7 @@ function Routes() {
                         <Route path={routesConstants.main} exact><Main /></Route>
                         <Route path={routesConstants.explore} exact><Explore /></Route>
                         <Route path={routesConstants.stars} exact><Stars /></Route>
+                        <Route path={routesConstants.search} exact><Search /></Route>
 
                         <Route path={routesConstants.login} exact><Login /></Route>
                         <Route path={routesConstants.user} exact><User /></Route>

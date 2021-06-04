@@ -1,14 +1,21 @@
 import React, {useState} from "react";
+import { useHistory } from 'react-router-dom'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import styles from '../../styles/header.module.less'
 import classNames from "classnames";
+import useKeyPress from "../../hooks/useKeyPress";
 
 function HeaderSearch() {
 
+    const history = useHistory()
     const [focus, setFocus] = useState(false)
     const [placeholder, setPlaceholder] = useState('搜索')
     const [text, setText] = useState('')
+
+    useKeyPress(['13', '108'], () => {
+       if (text) history.push(`/search/${text}`)
+    })
 
     function handleFocus() {
         setFocus(true)

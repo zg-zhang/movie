@@ -8,8 +8,10 @@ const urlConstants = {
     getAllData: '/main/getAllData',
     getAllList: '/main/getAllList',
     getDetail: (id: string) =>  `/main/getDetail/${id}`,
+    search: (id: string) => `/main/search/${id}`,
 
-    changeStar: '/api/changeStar'
+    changeStar: '/api/changeStar',
+    getStars: '/api/getStars'
 }
 
 export default urlConstants

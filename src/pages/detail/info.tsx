@@ -1,20 +1,36 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import styles from '../../styles/detail.module.less'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import {changeStar, isStar} from "../../events/users";
 
 interface infoProps {
     data: any
 }
 
 interface tagsItem {
-    name: string
+    name: string,
+    id: string
 }
 
 function Info(props: infoProps) {
     const { data } = props
     const countries = data.countries && JSON.parse(data.countries)
     const country = countries && countries.length !== 0 ? countries[0].name : ''
+
+    const [star, setStar] = useState(false)
+
+    useEffect(() => {
+        isStar(data.id).then(res => {
+            setStar(res)
+        })
+    })
+
+    function handleStar(id: string) {
+        changeStar(id).then(res => {
+            setStar(res)
+        })
+    }
 
     return (
         <div className={styles.info}>
@@ -50,10 +66,10 @@ function Info(props: infoProps) {
                         })}
                     </div>
                 </div>
-                <div className={styles.buttonBox}>
+                <div className={styles.buttonBox} onClick={() => handleStar(data.id)}>
                     <div className={styles.star}>
                         <FontAwesomeIcon icon={faHeart} style={{ marginRight: '8px' }}/>
-                        收藏
+                        { star ? '已收藏' : '收藏'}
                     </div>
                 </div>
             </div>

@@ -49,14 +49,17 @@ function Login() {
         const phone = phoneRef.current.value
         const password = passwordRef.current.value
         if (pre(phone, password)) {
-            doLogin({phone, password}).then(res => {
+            // @ts-ignore
+            doLogin({phone, password}).then((res: {data: any, code: number}) => {
                 console.log(res)
                 // @ts-ignore
                 toast(res.data.status, res.message, 3)
-                setLocalStorage(storageConstants.token, res.data.token)
-                setLocalStorage(storageConstants.userInfo, res.data.info)
-                changeData(res.data.info)
-                history.push('/')
+                if (res.code === 200) {
+                    setLocalStorage(storageConstants.token, res.data.token)
+                    setLocalStorage(storageConstants.userInfo, res.data.info)
+                    changeData(res.data.info)
+                    history.push('/')
+                }
             })
         }
     }

@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import classNames from "classnames";
-import styles from '../../styles/login.module.less'
+import styles from '../../styles/user.module.less'
 
 interface userInputProps {
     placeholder: string,

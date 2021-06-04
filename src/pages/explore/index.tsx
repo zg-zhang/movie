@@ -7,15 +7,18 @@ import {getSessionStorage, setSessionStorage} from "../../tools/storage";
 import storageConstants from "../../constants/storage";
 import List from "../../components/list";
 import storage from "../../constants/storage";
+import Footer from "../../components/footer";
 
 interface getListProps {
     data: never[]
 }
 
 function Explore() {
+    const defaultList = Array(10).fill({})
+
     const tabList = ['全部', '正在热映', '最受欢迎', '内地即将上映', '其他即将上映']
     const [active, setActive] = useState(0)
-    const [list, setList] = useState([])
+    const [list, setList] = useState(defaultList)
 
     useEffect(() => {
         const data = getSessionStorage(storageConstants.listData)
@@ -50,6 +53,7 @@ function Explore() {
                     { active === 4 ? <List list={list} info='其他即将上映' limit='2'/> : null}
                 </LazyLoad>
             </div>
+            <Footer />
         </>
     )
 }

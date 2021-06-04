@@ -12,3 +12,7 @@ export const getList = async <T>() => {
 export const getDetail = async <T>(id: string) => {
     return await request.get<T>(urlConstants.getDetail(id))
 }
+
+export const search = async (id: string) => {
+    return await request.get(urlConstants.search(id))
+}

@@ -1,10 +1,17 @@
 // @ts-ignore
 import axios from 'axios'
 import urlConstants from "../constants/url";
+import {getLocalStorage} from "./storage";
+import storage from "../constants/storage";
+
+const token = getLocalStorage(storage.token)
 
 const request = axios.create({
     baseURL: urlConstants.baseURL,
     timeout: 3000,
+    headers: {
+        Authorization: `Bearer ${token}`
+    }
 })
 
 request.interceptors.response.use((res: { data: any; }) => res.data, (err: { config: any; }) => {
